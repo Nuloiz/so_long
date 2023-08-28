@@ -61,9 +61,9 @@ int	main(int argc, char **argv)
 	{
 		mlx_destroy_window(vars.mlx, vars.win);
 		free_array(vars.map);
+		free(vars.mlx);
 		return (ft_printf("Error\nInvalid Map"));
 	}
 	moves(&vars);
-	free_array(vars.map);
 	return (0);
 }
