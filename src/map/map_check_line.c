@@ -12,12 +12,24 @@
 
 #include "so_long.h"
 
-static int	first_last_line(char *map)
+static int	first_line(char *map)
 {
 	int	width;
 
 	width = (int)ft_strlen(map) - 2;
-	while (width > -1)
+	while (width >= 0)
+	{
+		if (map[width] != '1')
+			return (0);
+		width--;
+	}
+	return (1);
+}
+
+static int	last_line(char *map, int width)
+{
+	width = width -2;
+	while (width >= 0)
 	{
 		if (map[width] != '1')
 			return (0);
@@ -52,8 +64,10 @@ int	map_check_line(int line, char *map, int length)
 
 	if (width == 0)
 		width = (int)ft_strlen(map);
-	if (line == 0 || line == length - 1)
-		correct_map = first_last_line(map);
+	if (line == 0)
+		correct_map = first_line(map);
+	else if (line == length - 1)
+		correct_map = last_line(map, width);
 	else
 	{
 		if (width != (int)ft_strlen(map))
