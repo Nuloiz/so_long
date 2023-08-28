@@ -14,14 +14,8 @@
 
 static void	is_collectible(t_vars *vars, int row, int col)
 {
-	char	*current;
-
 	if (vars->map[row][col] == 'C')
 	{
-		current = vars->map[row];
-		current[col] = '0';
-		free(vars->map[row]);
-		vars->map[row] = ft_strdup(current);
 		vars->map[row][col] = '0';
 		vars->current_c++;
 	}
