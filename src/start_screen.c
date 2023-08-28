@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static t_vars	*filling_texture(t_vars *vars)
+static void	filling_texture(t_vars *vars)
 {
 	int			size;
 
@@ -33,14 +33,13 @@ static t_vars	*filling_texture(t_vars *vars)
 		(vars->mlx, "textures/Space.xpm", &size, &size);
 	vars->textures->w = mlx_xpm_file_to_image \
 		(vars->mlx, "textures/Wall_MB2.xpm", &size, &size);
-	return (vars);
 }
 
 int	start_screen(t_vars *vars)
 {
 	vars->pos.y = startposition_row(vars->map) * 64;
 	vars->pos.x = startposition_col(vars->map) * 64;
-	vars = filling_texture(vars);
+	filling_texture(vars);
 	vars->num_c = number_of_collectibles(vars->map);
 	if (vars->num_c < 1)
 		return (0);

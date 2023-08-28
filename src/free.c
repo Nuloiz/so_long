@@ -27,5 +27,5 @@ void	free_array(char **array)
 
 void	free_texture(t_texture *texture)
 {
-	free((void *)texture);
+	free(texture);
 }
